@@ -1,2 +1,5 @@
 # Chess
-Chess written in Java
+Chess game
+
+
+GUI Design
