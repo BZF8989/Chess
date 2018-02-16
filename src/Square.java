@@ -5,7 +5,7 @@ import java.awt.*;
  * A single square on the board
  *
  *
- * Created by bill on 2/15/2018.
+ * Created by Bill on 2/15/2018.
  */
 public class Square {
 
@@ -15,9 +15,13 @@ public class Square {
 
     private final int Y_CORD;
 
+    /**
+     * clicking this square will switch this boolean
+     *
+     */
     private boolean selected;
 
-    private boolean viableMove;
+    private Piece p;
 
     Square(int x, int y){
         X_CORD = x;
@@ -28,9 +32,50 @@ public class Square {
             c = Color.WHITE;
         }
         selected = false;
-        viableMove = false;
     }
 
+    /**
+     * adds a piece to the board. This method only used
+     * during creation of the board
+     * @param p
+     */
+    public void addPiece(Piece p){
+        if(p != null)
+            this.p = p;
+    }
 
+    /**
+     * determines if this square has a piece
+     *
+     * @return true if there is already a piece on this square, false otherwise
+     */
+    public boolean hasPiece(){
+        return p != null;
+    }
+
+    /**
+     * move a piece from current square to
+     * square, s
+     *
+     * @param s
+     */
+    public void movePiece(Square s){
+        if(s.hasPiece()){
+            s.removePiece();
+        }
+        s.addPiece(p);
+        removePiece();
+
+    }
+
+    /**
+     * removes current piece from the square
+     * @return current piece on square
+     */
+    public Piece removePiece(){
+        Piece temp = p;
+        p = null;
+        return temp;
+    }
 
 }
