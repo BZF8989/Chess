@@ -78,4 +78,8 @@ public class Square {
         return temp;
     }
 
+    public Piece getPiece(){
+        return p;
+    }
+
 }

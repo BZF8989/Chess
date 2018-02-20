@@ -1,10 +1,9 @@
-
 /**
  *
  * Chess board class
  * Stores all pieces for both players
  *
- * Created by bill on 2/15/2018.
+ * Created by Bill on 2/15/2018.
  */
 public class Board {
 
@@ -41,7 +40,6 @@ public class Board {
 
 
 
-
         return board;
     }
 
@@ -61,6 +59,23 @@ public class Board {
         return board;
     }
 
+    /**
+     * moves a piece from square from to square to.
+     *
+     * @param from
+     * @param to
+     * @return null if there is no piece on square from or if there is no piece being taken
+     *          from square to
+     */
+    public Piece movePiece(Square from, Square to){
+        if(!from.hasPiece()){
+            return null;
+        }else{
+            Piece temp = to.getPiece();
+            from.movePiece(to);
+            return temp;
+        }
+    }
 
 
 
