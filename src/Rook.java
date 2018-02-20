@@ -1,9 +1,10 @@
 /**
- * the pawn piece
  *
- * Created by Bill on 2/15/2018.
+ * the rook piece
+ *
+ * Created by Bill on 2/16/2018.
  */
-public class Pawn implements Piece {
+public class Rook implements Piece{
 
     private boolean original_spot;
 
@@ -11,17 +12,16 @@ public class Pawn implements Piece {
 
     private int y_cord;
 
-    private final PieceTypes self = PieceTypes.PAWN;
+    private final PieceTypes self = PieceTypes.ROOK;
 
     private final Player p;
 
-    Pawn(int x, int y, Player p){
+    Rook(int x, int y, Player p){
         x_cord = x;
         y_cord = y;
-        original_spot = true;
         this.p = p;
+        original_spot = true;
     }
-
 
     @Override
     public void move(int x, int y) {
@@ -49,6 +49,4 @@ public class Pawn implements Piece {
     public Player getPlayer() {
         return p;
     }
-
-
 }

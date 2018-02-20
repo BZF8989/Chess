@@ -7,15 +7,6 @@
 public interface Piece {
 
     /**
-     * using PieceType class, determine if the move is valid
-     *
-     * @param x_cord
-     * @param y_cord
-     * @return true if piece can move onto x_cord, y_cord, false otherwise
-     */
-    boolean isValidMove(int x_cord, int y_cord);
-
-    /**
      * moves piece to x,y
      * @param x
      * @param y
