@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 
 /**
  *
@@ -11,6 +12,12 @@ public class Board extends JComponent{
 
     private final int BOARD_SIZE = 8;
 
+    private static final int SIZE = 800;
+
+    private static final int DISPLAY_HEIGHT = 20;
+
+    private static final int NUMBER_OF_PLAYERS = 2;
+
     private Square [][] board = new Square [BOARD_SIZE][BOARD_SIZE];
 
     private Player whosMove;
@@ -21,6 +28,43 @@ public class Board extends JComponent{
         whosMove = white;
         nextMove = black;
         board = fillBoard(board);
+
+        drawBoard();
+    }
+
+    /**
+     *
+     */
+    private void drawBoard(){
+        setLayout(new BorderLayout());
+        JLabel topText = new JLabel();
+        topText.setPreferredSize(new Dimension(SIZE/NUMBER_OF_PLAYERS, DISPLAY_HEIGHT));
+        topText.setLayout(new GridLayout(1, NUMBER_OF_PLAYERS));
+        JLabel move = new JLabel ("Test label");
+        topText.add(move);
+
+        add(topText, BorderLayout.PAGE_START);
+
+        JPanel p = new JPanel();
+        p.setLayout(new GridLayout(BOARD_SIZE,BOARD_SIZE));
+        JButton [][] buttons = new JButton[BOARD_SIZE][BOARD_SIZE];
+
+        for(int i = 0; i<BOARD_SIZE; i++){
+            for(int j = 0; j<BOARD_SIZE; j++){
+                //final int f = i;
+                //final int g = j;
+                final JButton b = new JButton();
+                if ((i+j)%2==0){
+                    b.setBackground(Color.BLACK);
+                }else {
+                    b.setBackground(Color.WHITE);
+                }
+                buttons[i][j] = b;
+
+                p.add(buttons[i][j]);
+            }
+        }
+        add(p, BorderLayout.CENTER);
     }
 
 

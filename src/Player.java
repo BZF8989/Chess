@@ -1,24 +1,20 @@
 /**
  *
- * Class to store the player.
+ * Enum to store the player.
  *
  * Created by Bill on 2/15/2018.
  */
-public class Player {
+public enum Player {
+    WHITE, BLACK;
 
-    private String player;
+    public Player getNext(){
+        switch(this){
+            case WHITE: return BLACK;
+            case BLACK: return WHITE;
+            default: throw new IllegalStateException();
 
-    Player(boolean player){
-        if(player){
-            this.player = "White";
-        }else {
-            this.player = "Black";
         }
-    }
 
-    @Override
-    public String toString(){
-        return player;
     }
 
 
