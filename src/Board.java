@@ -1,3 +1,5 @@
+import javax.swing.*;
+
 /**
  *
  * Chess board class
@@ -5,7 +7,7 @@
  *
  * Created by Bill on 2/15/2018.
  */
-public class Board {
+public class Board extends JComponent{
 
     private final int BOARD_SIZE = 8;
 
@@ -34,12 +36,10 @@ public class Board {
         for(int i = 0; i < BOARD_SIZE; i++ ){
             board[1][i].addPiece(new Pawn(1 , i, whosMove));
         }
+
         for(int i = 0; i < BOARD_SIZE; i++ ){
             board[BOARD_SIZE-1][i].addPiece(new Pawn(BOARD_SIZE-1 , i, nextMove));
         }
-
-
-
         return board;
     }
 
