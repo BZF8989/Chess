@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 
 /**
  *
@@ -8,6 +10,10 @@ import java.awt.*;
  * Created by Bill on 2/15/2018.
  */
 public class Square {
+
+    private final static String PROPERTY_NAME = Square.class.getName();
+
+    private final PropertyChangeSupport listeners;
 
     private final Color c;
 
@@ -32,6 +38,16 @@ public class Square {
             c = Color.WHITE;
         }
         selected = false;
+        listeners = new PropertyChangeSupport(this);
+    }
+
+    public void addListener(PropertyChangeListener l){
+        listeners.addPropertyChangeListener(l);
+        fireEvent();
+    }
+
+    private void fireEvent(){
+        listeners.firePropertyChange(PROPERTY_NAME, null, this);
     }
 
     /**
@@ -81,5 +97,15 @@ public class Square {
     public Piece getPiece(){
         return p;
     }
+
+    public void clicked(){
+        if(selected){
+            selected = false;
+        }else{
+            selected = true;
+        }
+    }
+
+
 
 }

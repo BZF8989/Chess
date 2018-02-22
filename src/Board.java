@@ -33,7 +33,7 @@ public class Board extends JComponent{
     }
 
     /**
-     *
+     * draws board and
      */
     private void drawBoard(){
         setLayout(new BorderLayout());
