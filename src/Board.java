@@ -18,7 +18,7 @@ public class Board extends JComponent{
 
     private static final int NUMBER_OF_PLAYERS = 2;
 
-    private Square [][] board = new Square [BOARD_SIZE][BOARD_SIZE];
+    private Piece [][] board = new Piece [BOARD_SIZE][BOARD_SIZE];
 
     private Player whosMove;
 
@@ -73,17 +73,11 @@ public class Board extends JComponent{
      * @param board
      * @return a board with all pieces in the proper starting places
      */
-    private Square[][] fillBoard(Square [][] board){
+    private Piece[][] fillBoard(Piece [][] board){
 
         board = createBoard(board);
 
-        for(int i = 0; i < BOARD_SIZE; i++ ){
-            board[1][i].addPiece(new Pawn(1 , i, whosMove));
-        }
 
-        for(int i = 0; i < BOARD_SIZE; i++ ){
-            board[BOARD_SIZE-1][i].addPiece(new Pawn(BOARD_SIZE-1 , i, nextMove));
-        }
         return board;
     }
 
@@ -93,12 +87,7 @@ public class Board extends JComponent{
      * @param board
      * @return board filled with empty squares
      */
-    private Square[][] createBoard(Square[][] board){
-        for(int i = 0; i < BOARD_SIZE; i++){
-            for(int j = 0; j < BOARD_SIZE; j++){
-                board[i][j] = new Square(i,j);
-            }
-        }
+    private Piece[][] createBoard(Piece[][] board){
 
         return board;
     }
@@ -106,19 +95,18 @@ public class Board extends JComponent{
     /**
      * moves a piece from square from to square to.
      *
-     * @param from
-     * @param to
+     * @param x_from
+     * @param y_from
+     * @param x_to
+     * @param y_to
      * @return null if there is no piece on square from or if there is no piece being taken
      *          from square to
      */
-    public Piece movePiece(Square from, Square to){
-        if(!from.hasPiece()){
-            return null;
-        }else{
-            Piece temp = to.getPiece();
-            from.movePiece(to);
-            return temp;
-        }
+    public Piece movePiece(int x_from, int y_from, int x_to, int y_to){
+
+
+
+        return board[x_to][y_to];
     }
 
 

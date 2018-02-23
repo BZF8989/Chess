@@ -38,6 +38,22 @@ public interface Piece {
      */
     Player getPlayer();
 
+    /**
+     * determines if the piece can move to x and y
+     * @param x
+     * @param y
+     * @return true if move is legal, flase otherwise
+     */
+    boolean canMove(int x, int y);
+
+    /**
+     * can move to take a piece
+     * @param x
+     * @param y
+     * @return true if you can take a piece at x,y; false otherwise
+     */
+    boolean canTake(int x, int y);
+
 
 
 
