@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -10,6 +11,8 @@ public abstract class Piece {
 
     private boolean original_spot;
 
+    private final int BOARD_SIZE = 8;
+
     private int x_cord;
 
     private int y_cord;
@@ -18,14 +21,17 @@ public abstract class Piece {
 
     private ArrayList<Pair> move;
 
-    private ArrayList<Pair> take;
 
     Piece(int x, int y, Player p){
         x_cord = x;
         y_cord = y;
         this.p = p;
         move=null;
-        take=null;
+    }
+
+
+    public ArrayList<Pair> getMove(){
+        return move;
     }
 
     /**
@@ -83,6 +89,8 @@ public abstract class Piece {
     public abstract boolean canTake(int x, int y);
 
 
-
+    public boolean withInBounds(int x, int y){
+        return x>=0 && x <=BOARD_SIZE && y>=0 && y<=BOARD_SIZE;
+    }
 
 }

@@ -26,4 +26,9 @@ public class Pair<L, R> {
         return ("(" + left + ", " + right + ")");
     }
 
+    @Override
+    public boolean equals(Object o){
+        return this.toString().equals(o.toString());
+    }
+
 }
