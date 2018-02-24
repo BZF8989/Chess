@@ -4,51 +4,32 @@
  *
  * Created by Bill on 2/19/2018.
  */
-public class Queen implements Piece {
-
-    private boolean original_spot;
-
-    private int x_cord;
-
-    private int y_cord;
+public class Queen extends Piece {
 
     private final PieceTypes self = PieceTypes.QUEEN;
 
-    private final Player p;
-
     Queen(int x, int y, Player p){
-        x_cord = x;
-        y_cord = y;
-        original_spot = true;
-        this.p = p;
+        super(x, y, p);
     }
-
 
     @Override
     public void move(int x, int y) {
-        x_cord = x;
-        y_cord = y;
-        original_spot = false;
+
     }
 
     @Override
     public int pieceType() {
-        return self.getPieceType();
+        return 0;
     }
 
     @Override
-    public int getXcord() {
-        return x_cord;
+    public boolean canMove(int x, int y) {
+        return false;
     }
 
     @Override
-    public int getYcord() {
-        return y_cord;
-    }
-
-    @Override
-    public Player getPlayer() {
-        return p;
+    public boolean canTake(int x, int y) {
+        return false;
     }
 
 }

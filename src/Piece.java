@@ -1,50 +1,78 @@
+import java.util.ArrayList;
+
 /**
  *
  * pieces on the board
  *
  * Created by Bill on 2/15/2018.
  */
-public interface Piece {
+public abstract class Piece {
+
+    private boolean original_spot;
+
+    private int x_cord;
+
+    private int y_cord;
+
+    private final Player p;
+
+    private ArrayList<Pair> move;
+
+    private ArrayList<Pair> take;
+
+    Piece(int x, int y, Player p){
+        x_cord = x;
+        y_cord = y;
+        this.p = p;
+        move=null;
+        take=null;
+    }
 
     /**
      * moves piece to x,y
      * @param x
      * @param y
      */
-    void move(int x, int y);
+    public abstract void move(int x, int y);
 
     /**
      * using the class PieceType, determines what piece it is
      *
      * @return the type of piece as int
      */
-    int pieceType();
+    public abstract int pieceType();
 
     /**
      * gets piece's current x cord
      * @return x cord
      */
-    int getXcord();
+    public int getXcord(){
+        return x_cord;
+    }
 
     /**
      * gets piece's current y cord
      * @return y cord
      */
-    int getYcord();
+    public int getYcord(){
+        return y_cord;
+    }
 
     /**
      * gets the player that owns this piece
      * @return the player that owns the piece
      */
-    Player getPlayer();
+    public Player getPlayer(){
+        return p;
+    }
 
     /**
      * determines if the piece can move to x and y
      * @param x
      * @param y
-     * @return true if move is legal, flase otherwise
+     * @return true if move is legal, false otherwise
      */
-    boolean canMove(int x, int y);
+    public abstract boolean canMove(int x, int y);
 
     /**
      * can move to take a piece
@@ -52,7 +80,7 @@ public interface Piece {
      * @param y
      * @return true if you can take a piece at x,y; false otherwise
      */
-    boolean canTake(int x, int y);
+    public abstract boolean canTake(int x, int y);
 
 
 
