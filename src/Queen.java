@@ -24,12 +24,20 @@ public class Queen extends Piece {
 
     @Override
     public boolean canMove(int x, int y) {
-        return false;
+        Pair square = new Pair(x,y);
+        updateSquares();
+        return getMove().stream().anyMatch(i-> i.equals(square));
     }
 
     @Override
     public boolean canTake(int x, int y) {
         return false;
+    }
+
+    @SuppressWarnings("unchecked")
+    private void updateSquares(){
+        getMove().clear();
+        //TODO
     }
 
 }
